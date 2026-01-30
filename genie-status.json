@@ -49,7 +49,7 @@
     },
     "network": {
       "status": "online",
-      "latencyMs": 33
+      "latencyMs": 45
     }
   },
   "activeSubAgents": 0
