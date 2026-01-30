@@ -1,14 +1,17 @@
 {
-  "currentWork": "Factory operations app live on LAN with real production data. Discussing permissions system design \u2014 role-based access for admin vs. floor staff. WO uniqueness enforced at DB level.",
+  "currentWork": "Auth and role-based permission system built and deployed \u2014 PIN login for floor staff, password login for admins. Factory operations app live on LAN with real production data.",
   "subAgents": [],
   "queue": [
-    "Permissions/login system (role tiers: Admin, Floor, Operator)",
     "Work order processing agent (dedicated PO parsing with guardrails)",
     "Build packing list module",
     "Polish work order queue for iPad",
     "Cross-check remaining research reports"
   ],
   "recentCompletions": [
+    {
+      "task": "Auth + role-based permission system \u2014 PIN pad for floor, password for admin, middleware, seed script, role-gated UI",
+      "time": "2026-01-29 07:58 PM"
+    },
     {
       "task": "Permissions system design discussion \u2014 3 role tiers, PIN-based auth for factory floor",
       "time": "2026-01-29 07:50 PM"
@@ -24,33 +27,29 @@
     {
       "task": "Packing list workflow deep dive \u2014 quality grading, reconciliation logic documented",
       "time": "2026-01-29 05:23 PM"
-    },
-    {
-      "task": "Operational and financial baseline analysis captured",
-      "time": "2026-01-29 04:00 PM"
     }
   ],
-  "lastUpdated": "2026-01-30T03:52:00Z",
+  "lastUpdated": "2026-01-30T04:07:00Z",
   "system": {
     "battery": {
       "percent": null,
       "charging": true
     },
     "cpu": {
-      "percent": 5
+      "percent": 19
     },
     "memory": {
-      "percent": 23,
+      "percent": 24,
       "totalGb": 24
     },
     "disk": {
-      "availGb": "409",
+      "availGb": "408",
       "totalGb": "460",
       "usedPercent": 3
     },
     "network": {
       "status": "online",
-      "latencyMs": 51
+      "latencyMs": 61
     }
   },
   "activeSubAgents": 0
