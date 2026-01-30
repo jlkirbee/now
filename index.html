@@ -293,6 +293,48 @@
       .bar-left { gap: 10px; }
       .status-bar { font-size: 0.62rem; }
     }
+
+    /* Wide layout — side-by-side columns */
+    .column-header {
+      display: none;
+      font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+      font-size: 0.82rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: #3a3632;
+      padding-bottom: 12px;
+      margin-bottom: 24px;
+      border-bottom: 1px solid #e8e4df;
+    }
+
+    .column-header .dot {
+      display: inline-block;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      margin-left: 5px;
+      vertical-align: middle;
+      position: relative;
+      top: -1px;
+    }
+
+    @media (min-width: 900px) {
+      .page { max-width: 1100px; }
+      nav { display: none; }
+      .columns {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 48px;
+      }
+      .tab-content { display: block !important; }
+      .column-header { display: block; }
+    }
+
+    body.dark .column-header { color: #d4cfc6; border-color: #2e2b26; }
+
+    @media (prefers-color-scheme: dark) {
+      body:not(.light) .column-header { color: #d4cfc6; border-color: #2e2b26; }
+    }
   </style>
 </head>
 <body>
@@ -314,41 +356,48 @@
 
     <p id="last-update-line" style="font-style:italic; color:#8a7e6b; font-size:0.7em; margin:0 0 0.3em 0; letter-spacing:0.01em; opacity:0.7;"></p>
 
-    <div class="tab-content active" id="content-genie">
-      <div class="section">
-        <div class="label">Currently</div>
-        <p class="now-text" id="genie-now">Loading...</p>
+    <div class="columns">
+      <div class="column">
+        <div class="column-header">Genie<span class="dot on" id="genie-dot-col"></span></div>
+        <div class="tab-content active" id="content-genie">
+          <div class="section">
+            <div class="label">Currently</div>
+            <p class="now-text" id="genie-now">Loading...</p>
+          </div>
+          <div class="section">
+            <div class="label">Sub-agents</div>
+            <ul class="text-list" id="genie-agents"></ul>
+          </div>
+          <div class="section">
+            <div class="label">Queue</div>
+            <ol class="text-list" id="genie-queue"></ol>
+          </div>
+          <div class="section">
+            <div class="label">Done</div>
+            <ul class="text-list" id="genie-done"></ul>
+          </div>
+        </div>
       </div>
-      <div class="section">
-        <div class="label">Sub-agents</div>
-        <ul class="text-list" id="genie-agents"></ul>
-      </div>
-      <div class="section">
-        <div class="label">Queue</div>
-        <ol class="text-list" id="genie-queue"></ol>
-      </div>
-      <div class="section">
-        <div class="label">Done</div>
-        <ul class="text-list" id="genie-done"></ul>
-      </div>
-    </div>
-
-    <div class="tab-content" id="content-jett">
-      <div class="section">
-        <div class="label">Currently</div>
-        <p class="now-text" id="jett-now">Loading...</p>
-      </div>
-      <div class="section">
-        <div class="label">Sub-agents</div>
-        <ul class="text-list" id="jett-agents"></ul>
-      </div>
-      <div class="section">
-        <div class="label">Queue</div>
-        <ol class="text-list" id="jett-queue"></ol>
-      </div>
-      <div class="section">
-        <div class="label">Done</div>
-        <ul class="text-list" id="jett-done"></ul>
+      <div class="column">
+        <div class="column-header">Jett<span class="dot on" id="jett-dot-col"></span></div>
+        <div class="tab-content" id="content-jett">
+          <div class="section">
+            <div class="label">Currently</div>
+            <p class="now-text" id="jett-now">Loading...</p>
+          </div>
+          <div class="section">
+            <div class="label">Sub-agents</div>
+            <ul class="text-list" id="jett-agents"></ul>
+          </div>
+          <div class="section">
+            <div class="label">Queue</div>
+            <ol class="text-list" id="jett-queue"></ol>
+          </div>
+          <div class="section">
+            <div class="label">Done</div>
+            <ul class="text-list" id="jett-done"></ul>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -398,9 +447,11 @@
 
     function dots() {
       ['genie','jett'].forEach(a => {
-        const d = document.getElementById(a+'-dot');
         const fresh = D[a]?.lastUpdated && (Date.now()-new Date(D[a].lastUpdated).getTime() < 30*60*1000);
-        d.className = 'dot '+(fresh?'on':'off');
+        const cls = 'dot '+(fresh?'on':'off');
+        document.getElementById(a+'-dot').className = cls;
+        const col = document.getElementById(a+'-dot-col');
+        if (col) col.className = cls;
       });
     }
 

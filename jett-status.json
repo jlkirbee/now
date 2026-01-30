@@ -65,20 +65,20 @@
       "charging": true
     },
     "cpu": {
-      "percent": 5
+      "percent": 12
     },
     "memory": {
-      "percent": 33,
+      "percent": 63,
       "totalGb": 8
     },
     "disk": {
-      "availGb": "179",
+      "availGb": "178",
       "totalGb": "228",
-      "usedPercent": 7
+      "usedPercent": 22
     },
     "network": {
       "status": "online",
-      "latencyMs": 86
+      "latencyMs": 30
     }
   },
   "activeSubAgents": 1
