@@ -43,17 +43,17 @@
       "time": "2026-01-29 04:15 AM"
     }
   ],
-  "lastUpdated": "2026-01-30T09:49:58Z",
+  "lastUpdated": "2026-01-30T10:00:01Z",
   "system": {
     "battery": {
       "percent": 100,
       "charging": true
     },
     "cpu": {
-      "percent": 6
+      "percent": 2
     },
     "memory": {
-      "percent": 31,
+      "percent": 32,
       "totalGb": 8
     },
     "disk": {
@@ -63,7 +63,7 @@
     },
     "network": {
       "status": "online",
-      "latencyMs": 123
+      "latencyMs": 120
     }
   },
   "activeSubAgents": 0
