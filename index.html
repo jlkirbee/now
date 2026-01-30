@@ -304,7 +304,7 @@
 
     <div class="status-bar" id="status-bar">
       <div class="bar-left" id="bar-stats"></div>
-      <a id="refresh-btn" onclick="forceRefresh()" style="cursor:pointer; opacity:0.5; transition:opacity 0.2s; font-size:0.85em; letter-spacing:0.02em; flex-shrink:0; margin-left:auto; padding-left:12px;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.5">↻ refresh</a>
+      <a id="refresh-btn" onclick="forceRefresh()" style="cursor:pointer; opacity:0.5; transition:opacity 0.2s; font-size:0.85em; letter-spacing:0.02em; flex-shrink:0; margin-left:0; padding-left:12px;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.5">↻ refresh</a>
     </div>
 
     <nav>
@@ -369,6 +369,11 @@
         btn.textContent = '↻ refresh';
         btn.style.opacity = '0.5';
       });
+    }
+
+      btn.textContent = '⚡ poked!';
+      btn.style.opacity = '1';
+      window.open('
     }
 
     function switchTab(t) {

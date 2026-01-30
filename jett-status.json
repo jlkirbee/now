@@ -1,70 +1,62 @@
 {
-  "currentWork": "Security hardening + compounding tonight's learnings",
+  "lastUpdated": "2026-01-30T11:13:00Z",
+  "currentWork": "Late night session — workflow overhaul, security audit, deep research SOP",
   "subAgents": [
     {
-      "name": "security-manual-research",
+      "name": "merge-sop-and-prompt",
+      "status": "running",
+      "task": "Merging deep research prompt SOPs + crafting Japanese restaurant AI calling prompt"
+    },
+    {
+      "name": "security-audit-build",
       "status": "complete",
-      "task": "Comprehensive security reference manual (516 lines)",
-      "completedAt": "2026-01-29T13:19:00Z"
+      "task": "Security audit script — hybrid bash/AI, both machines, baseline saved",
+      "completedAt": "2026-01-30T10:51:00Z"
+    },
+    {
+      "name": "fact-check-technical",
+      "status": "complete",
+      "task": "Decision log fact-check: 14/15 verified",
+      "completedAt": "2026-01-30T10:32:00Z"
+    },
+    {
+      "name": "fact-check-dates",
+      "status": "complete",
+      "task": "Decision log date verification: 23/31 verified, 2 fixed",
+      "completedAt": "2026-01-30T10:35:00Z"
+    },
+    {
+      "name": "fact-check-reasoning",
+      "status": "complete",
+      "task": "Reasoning claims fact-check: usage stats corrected",
+      "completedAt": "2026-01-30T10:37:00Z"
     }
   ],
   "queue": [
-    "Tailscale ACL configuration",
-    "sshd hardening (key-only auth)",
-    "Japan restaurant shortlist + booking plan"
+    "Update weekly security cron to use new script",
+    "Japanese restaurant AI calling research",
+    "/now refresh button → Telegram deep link (done)"
   ],
   "recentCompletions": [
     {
-      "task": "Security manual \u2014 threat model, hardening checklist, incident playbooks",
-      "time": "2026-01-29 05:19 AM"
+      "task": "Workflow overhaul — unified Brainstorm→Plan→Build flow with auto-trigger review gate",
+      "time": "2026-01-30 02:46 AM"
     },
     {
-      "task": "Connecting Clawdbots manual (docs/CONNECTING-CLAWDBOTS.md)",
-      "time": "2026-01-29 05:18 AM"
+      "task": "Merge Discipline (Jett↔Genie) — SOUL.md rule for non-destructive syncing",
+      "time": "2026-01-30 02:36 AM"
     },
     {
-      "task": "Genie \u2194 Jett direct messaging via cron wake",
-      "time": "2026-01-29 05:12 AM"
+      "task": "Decision log corrections — 2 misdated entries fixed, usage stats corrected",
+      "time": "2026-01-30 02:37 AM"
     },
     {
-      "task": "Bidirectional SSH + PATH fix for non-interactive shells",
-      "time": "2026-01-29 05:00 AM"
+      "task": "Security audit script + baseline — found & fixed Genie's keychain perms",
+      "time": "2026-01-30 02:51 AM"
     },
     {
-      "task": "Node-to-node pairing \u2014 Genie paired to Jett's gateway",
-      "time": "2026-01-29 04:53 AM"
-    },
-    {
-      "task": "Best practices sharing system (real-time push + daily sync)",
-      "time": "2026-01-29 04:20 AM"
-    },
-    {
-      "task": "Sub-agent anti-patterns added to both SOUL.md files",
-      "time": "2026-01-29 04:15 AM"
+      "task": "Deep research prompt SOP v1",
+      "time": "2026-01-30 03:01 AM"
     }
-  ],
-  "lastUpdated": "2026-01-30T11:10:18Z",
-  "system": {
-    "battery": {
-      "percent": 100,
-      "charging": true
-    },
-    "cpu": {
-      "percent": 3
-    },
-    "memory": {
-      "percent": 32,
-      "totalGb": 8
-    },
-    "disk": {
-      "availGb": "179",
-      "totalGb": "228",
-      "usedPercent": 7
-    },
-    "network": {
-      "status": "online",
-      "latencyMs": 34
-    }
-  },
-  "activeSubAgents": 0
+  ]
 }
