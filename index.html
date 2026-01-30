@@ -315,6 +315,16 @@
       opacity: 0.7;
     }
 
+    .col-updated {
+      display: none;
+      font-style: italic;
+      color: #8a7e6b;
+      font-size: 0.7rem;
+      margin: 0 0 6px 0;
+      letter-spacing: 0.01em;
+      opacity: 0.7;
+    }
+
     .column-header .dot {
       display: inline-block;
       width: 5px;
@@ -329,6 +339,7 @@
     @media (min-width: 900px) {
       .page { max-width: 1100px; }
       nav { display: none; }
+      #last-update-line { display: none; }
       .columns {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -336,12 +347,15 @@
       }
       .tab-content { display: block !important; }
       .column-header { display: block; }
+      .col-updated { display: block; }
     }
 
     body.dark .column-header { color: #d4cfc6; border-color: #2e2b26; }
+    body.dark .col-updated { color: #6a655c; }
 
     @media (prefers-color-scheme: dark) {
       body:not(.light) .column-header { color: #d4cfc6; border-color: #2e2b26; }
+      body:not(.light) .col-updated { color: #6a655c; }
     }
   </style>
 </head>
@@ -366,6 +380,7 @@
 
     <div class="columns">
       <div class="column">
+        <div class="col-updated" id="genie-updated-col"></div>
         <div class="column-header">Genie<span class="dot on" id="genie-dot-col"></span><span class="col-vitals" id="genie-vitals"></span></div>
         <div class="tab-content active" id="content-genie">
           <div class="section">
@@ -387,6 +402,7 @@
         </div>
       </div>
       <div class="column">
+        <div class="col-updated" id="jett-updated-col"></div>
         <div class="column-header">Jett<span class="dot on" id="jett-dot-col"></span><span class="col-vitals" id="jett-vitals"></span></div>
         <div class="tab-content" id="content-jett">
           <div class="section">
@@ -516,9 +532,23 @@
         cl.innerHTML = '<li class="empty">Nothing yet</li>';
       }
 
+      // Global footer + inline time (for narrow/tab layout)
       if (p===cur && d.lastUpdated) {
         document.getElementById('updated').textContent = 'Updated '+fmt(d.lastUpdated);
         updateInlineTime(d.lastUpdated);
+      }
+
+      // Per-column updated (for wide layout)
+      const colUp = document.getElementById(p + '-updated-col');
+      if (colUp && d.lastUpdated) {
+        const ms = Date.now() - new Date(d.lastUpdated).getTime();
+        const sec = Math.floor(ms/1000);
+        let ago;
+        if (sec < 60) ago = 'just now';
+        else if (sec < 3600) ago = Math.floor(sec/60) + 'm ago';
+        else if (sec < 86400) ago = Math.floor(sec/3600) + 'h ' + Math.floor((sec%3600)/60) + 'm ago';
+        else ago = Math.floor(sec/86400) + 'd ago';
+        colUp.textContent = 'Last update: ' + fmt(d.lastUpdated) + ' · ' + ago;
       }
     }
 
