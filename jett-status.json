@@ -43,7 +43,7 @@
       "time": "2026-01-29 04:15 AM"
     }
   ],
-  "lastUpdated": "2026-01-30T05:18:55Z",
+  "lastUpdated": "2026-01-30T05:28:57Z",
   "system": {
     "battery": {
       "percent": 100,
@@ -63,7 +63,7 @@
     },
     "network": {
       "status": "online",
-      "latencyMs": 74
+      "latencyMs": 28
     }
   },
   "activeSubAgents": 0
