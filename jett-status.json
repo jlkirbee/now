@@ -43,14 +43,14 @@
       "time": "2026-01-29 04:15 AM"
     }
   ],
-  "lastUpdated": "2026-01-30T08:19:37Z",
+  "lastUpdated": "2026-01-30T08:29:39Z",
   "system": {
     "battery": {
       "percent": 100,
       "charging": true
     },
     "cpu": {
-      "percent": 2
+      "percent": 3
     },
     "memory": {
       "percent": 31,
