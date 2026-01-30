@@ -1,6 +1,6 @@
 {
-  "lastUpdated": "2026-01-30T11:13:00Z",
-  "currentWork": "Late night session — workflow overhaul, security audit, deep research SOP",
+  "lastUpdated": "2026-01-30T11:20:20Z",
+  "currentWork": "Late night session \u2014 workflow overhaul, security audit, deep research SOP",
   "subAgents": [
     {
       "name": "merge-sop-and-prompt",
@@ -10,7 +10,7 @@
     {
       "name": "security-audit-build",
       "status": "complete",
-      "task": "Security audit script — hybrid bash/AI, both machines, baseline saved",
+      "task": "Security audit script \u2014 hybrid bash/AI, both machines, baseline saved",
       "completedAt": "2026-01-30T10:51:00Z"
     },
     {
@@ -35,28 +35,51 @@
   "queue": [
     "Update weekly security cron to use new script",
     "Japanese restaurant AI calling research",
-    "/now refresh button → Telegram deep link (done)"
+    "/now refresh button \u2192 Telegram deep link (done)"
   ],
   "recentCompletions": [
     {
-      "task": "Workflow overhaul — unified Brainstorm→Plan→Build flow with auto-trigger review gate",
+      "task": "Workflow overhaul \u2014 unified Brainstorm\u2192Plan\u2192Build flow with auto-trigger review gate",
       "time": "2026-01-30 02:46 AM"
     },
     {
-      "task": "Merge Discipline (Jett↔Genie) — SOUL.md rule for non-destructive syncing",
+      "task": "Merge Discipline (Jett\u2194Genie) \u2014 SOUL.md rule for non-destructive syncing",
       "time": "2026-01-30 02:36 AM"
     },
     {
-      "task": "Decision log corrections — 2 misdated entries fixed, usage stats corrected",
+      "task": "Decision log corrections \u2014 2 misdated entries fixed, usage stats corrected",
       "time": "2026-01-30 02:37 AM"
     },
     {
-      "task": "Security audit script + baseline — found & fixed Genie's keychain perms",
+      "task": "Security audit script + baseline \u2014 found & fixed Genie's keychain perms",
       "time": "2026-01-30 02:51 AM"
     },
     {
       "task": "Deep research prompt SOP v1",
       "time": "2026-01-30 03:01 AM"
     }
-  ]
+  ],
+  "system": {
+    "battery": {
+      "percent": 100,
+      "charging": true
+    },
+    "cpu": {
+      "percent": 5
+    },
+    "memory": {
+      "percent": 33,
+      "totalGb": 8
+    },
+    "disk": {
+      "availGb": "179",
+      "totalGb": "228",
+      "usedPercent": 7
+    },
+    "network": {
+      "status": "online",
+      "latencyMs": 86
+    }
+  },
+  "activeSubAgents": 1
 }
