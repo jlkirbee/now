@@ -1,16 +1,16 @@
 {
-  "lastUpdated": "2026-01-30T11:44:00Z",
-  "currentWork": "Overnight mode — compound complete, running security scan + memory maintenance",
+  "lastUpdated": "2026-01-30T11:50:28Z",
+  "currentWork": "Overnight mode \u2014 compound complete, running security scan + memory maintenance",
   "subAgents": [],
   "queue": [
     "Security scan all public repos for leaked bot links/credentials",
     "Verify Genie adopted Hard Rule #1",
     "MEMORY.md trim pass (currently over 400 line target)",
-    "Context hygiene — weekly pass (TOOLS.md, stale entries)"
+    "Context hygiene \u2014 weekly pass (TOOLS.md, stale entries)"
   ],
   "recentCompletions": [
     {
-      "task": "Hard Rule #1 — scrubbed bot link from /now repo + entire git history",
+      "task": "Hard Rule #1 \u2014 scrubbed bot link from /now repo + entire git history",
       "time": "2026-01-30 03:41 AM"
     },
     {
@@ -18,7 +18,7 @@
       "time": "2026-01-30 03:28 AM"
     },
     {
-      "task": "Deep research SOP merged — ChatGPT + Jett best of both",
+      "task": "Deep research SOP merged \u2014 ChatGPT + Jett best of both",
       "time": "2026-01-30 03:01 AM"
     },
     {
@@ -26,7 +26,7 @@
       "time": "2026-01-30 02:51 AM"
     },
     {
-      "task": "Workflow overhaul — unified Brainstorm→Plan→Build flow",
+      "task": "Workflow overhaul \u2014 unified Brainstorm\u2192Plan\u2192Build flow",
       "time": "2026-01-30 02:46 AM"
     }
   ],
@@ -36,20 +36,20 @@
       "charging": true
     },
     "cpu": {
-      "percent": 8
+      "percent": 2
     },
     "memory": {
-      "percent": 61,
+      "percent": 32,
       "totalGb": 8
     },
     "disk": {
       "availGb": "178",
       "totalGb": "228",
-      "usedPercent": 22
+      "usedPercent": 7
     },
     "network": {
       "status": "online",
-      "latencyMs": 28
+      "latencyMs": 33
     }
   },
   "activeSubAgents": 0
