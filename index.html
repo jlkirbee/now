@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="/now">
+  <title>/now</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      background: #faf8f5;
+      color: #3a3632;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.6;
+    }
+
+    .page {
+      max-width: 540px;
+      margin: 0 auto;
+      padding: 48px 20px 64px;
+    }
+
+    .header-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 32px;
+      position: relative;
+    }
+
+    h1 {
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: #3a3632;
+      letter-spacing: 0.02em;
+    }
+
+    h1 span { color: #9a938a; }
+
+    /* Tabs — just text links */
+    nav {
+      margin-bottom: 36px;
+      font-size: 0.92rem;
+      display: flex;
+      gap: 20px;
+      border-bottom: 1px solid #e8e4df;
+      padding-bottom: 12px;
+    }
+
+    nav a {
+      color: #9a938a;
+      text-decoration: none;
+      cursor: pointer;
+      padding-bottom: 2px;
+      transition: color 0.15s;
+      font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+      font-size: 0.82rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    nav a:hover { color: #3a3632; }
+
+    nav a.active {
+      color: #3a3632;
+      background: rgba(58, 54, 50, 0.08);
+      border-radius: 6px;
+      padding: 4px 10px;
+      margin: -4px -10px;
+      border-bottom: none;
+    }
+
+    nav .dot {
+      display: inline-block;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      margin-left: 5px;
+      vertical-align: middle;
+      position: relative;
+      top: -1px;
+    }
+
+    .dot.on { background: #7a9a6e; }
+    .dot.off { background: #ccc8c1; }
+
+    /* Sections */
+    .tab-content { display: none; }
+    .tab-content.active { display: block; }
+
+    .section {
+      margin-bottom: 28px;
+    }
+
+    .label {
+      font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #b5afa6;
+      margin-bottom: 8px;
+    }
+
+    .now-text {
+      font-size: 1rem;
+      color: #3a3632;
+      line-height: 1.65;
+    }
+
+    /* Lists — plain text */
+    ul, ol { list-style: none; }
+
+    .text-list li {
+      font-size: 0.9rem;
+      color: #5a5550;
+      padding: 5px 0;
+      line-height: 1.5;
+    }
+
+    .text-list li + li {
+      border-top: 1px solid #eeebe6;
+    }
+
+    .text-list .status {
+      font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-right: 8px;
+    }
+
+    .s-done { color: #7a9a6e; }
+    .s-running { color: #c49a5c; }
+    .s-queued { color: #b5afa6; }
+
+    .meta {
+      color: #b5afa6;
+      font-size: 0.78rem;
+      font-style: italic;
+    }
+
+    .queue-num {
+      color: #b5afa6;
+      font-size: 0.82rem;
+      margin-right: 6px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+    }
+
+    .empty {
+      color: #ccc8c1;
+      font-style: italic;
+      font-size: 0.88rem;
+    }
+
+    footer {
+      margin-top: 48px;
+      padding-top: 16px;
+      border-top: 1px solid #e8e4df;
+      font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+      font-size: 0.7rem;
+      color: #ccc8c1;
+    }
+
+    body.dark {
+      background: #1a1916; color: #d4cfc6;
+    }
+    body.dark h1 { color: #d4cfc6; }
+    body.dark h1 span { color: #7a756c; }
+    body.dark nav { border-color: #2e2b26; }
+    body.dark nav a { color: #7a756c; }
+    body.dark nav a.active { color: #d4cfc6; background: rgba(212, 207, 198, 0.1); border-color: transparent; }
+    body.dark .label { color: #6a655c; }
+    body.dark .now-text { color: #d4cfc6; }
+    body.dark .text-list li { color: #a09a90; border-color: #2e2b26; }
+    body.dark .s-done { color: #8aaa7e; }
+    body.dark .s-running { color: #d4aa6c; }
+    body.dark .s-queued { color: #6a655c; }
+    body.dark .meta { color: #6a655c; }
+    body.dark .empty { color: #4a4540; }
+    body.dark footer { border-color: #2e2b26; color: #4a4540; }
+    body.dark .dot.on { background: #8aaa7e; }
+    body.dark .dot.off { background: #4a4540; }
+    body.dark .theme-toggle { color: #7a756c; }
+
+    .theme-toggle {
+      background: none;
+      border: none;
+      font-size: 1rem;
+      cursor: pointer;
+      color: #b5afa6;
+      padding: 0;
+      margin: 0;
+      line-height: 1;
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+    }
+
+    /* Status bar */
+    .status-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 0;
+      margin-bottom: 12px;
+      border-bottom: 1px solid #e8e4df;
+      font-family: -apple-system, BlinkMacSystemFont, 'SF Mono', 'Menlo', monospace;
+      font-size: 0.68rem;
+      color: #9a938a;
+      letter-spacing: 0.02em;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;          /* Firefox */
+      -ms-overflow-style: none;       /* IE/Edge */
+      white-space: nowrap;
+    }
+
+    .status-bar::-webkit-scrollbar { display: none; }  /* Chrome/Safari */
+
+    .bar-left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-shrink: 0;
+    }
+
+    .bar-right {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .stat {
+      display: flex;
+      align-items: center;
+      gap: 3px;
+      white-space: nowrap;
+    }
+
+    .stat-icon {
+      font-style: normal;
+      font-size: 0.78rem;
+    }
+
+    .stat-val { font-weight: 500; }
+    .stat-good { color: #7a9a6e; }
+    .stat-warn { color: #c49a5c; }
+    .stat-bad { color: #b56a5c; }
+
+    body.dark .status-bar { border-color: #2e2b26; color: #6a655c; }
+    body.dark .stat-good { color: #8aaa7e; }
+    body.dark .stat-warn { color: #d4aa6c; }
+    body.dark .stat-bad { color: #c57a6c; }
+
+    @media (prefers-color-scheme: dark) {
+      body:not(.light) .status-bar { border-color: #2e2b26; color: #6a655c; }
+      body:not(.light) .stat-good { color: #8aaa7e; }
+      body:not(.light) .stat-warn { color: #d4aa6c; }
+      body:not(.light) .stat-bad { color: #c57a6c; }
+    }
+
+    @media (prefers-color-scheme: dark) {
+      body:not(.light) {
+        background: #1a1916; color: #d4cfc6;
+      }
+      body:not(.light) h1 { color: #d4cfc6; }
+      body:not(.light) h1 span { color: #7a756c; }
+      body:not(.light) nav { border-color: #2e2b26; }
+      body:not(.light) nav a { color: #7a756c; }
+      body:not(.light) nav a.active { color: #d4cfc6; background: rgba(212, 207, 198, 0.1); border-color: transparent; }
+      body:not(.light) .label { color: #6a655c; }
+      body:not(.light) .now-text { color: #d4cfc6; }
+      body:not(.light) .text-list li { color: #a09a90; border-color: #2e2b26; }
+      body:not(.light) .s-done { color: #8aaa7e; }
+      body:not(.light) .s-running { color: #d4aa6c; }
+      body:not(.light) .s-queued { color: #6a655c; }
+      body:not(.light) .meta { color: #6a655c; }
+      body:not(.light) .empty { color: #4a4540; }
+      body:not(.light) footer { border-color: #2e2b26; color: #4a4540; }
+      body:not(.light) .dot.on { background: #8aaa7e; }
+      body:not(.light) .dot.off { background: #4a4540; }
+      body:not(.light) .theme-toggle { color: #7a756c; }
+    }
+
+    @media (max-width: 480px) {
+      .page { padding: 32px 16px 48px; }
+      .bar-left { gap: 10px; }
+      .status-bar { font-size: 0.62rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="header-row">
+      <h1>/now <span>— what we're working on</span></h1>
+      <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle light/dark mode">☀︎</button>
+    </div>
+
+    <div class="status-bar" id="status-bar">
+      <div class="bar-left" id="bar-stats"></div>
+      <a id="refresh-btn" onclick="forceRefresh()" style="cursor:pointer; opacity:0.5; transition:opacity 0.2s; font-size:0.85em; letter-spacing:0.02em; flex-shrink:0; margin-left:auto; padding-left:12px;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.5">↻ refresh</a>
+    </div>
+
+    <nav>
+      <a class="active" data-tab="genie" onclick="switchTab('genie')">Genie<span class="dot on" id="genie-dot"></span></a>
+      <a data-tab="jett" onclick="switchTab('jett')">Jett<span class="dot on" id="jett-dot"></span></a>
+    </nav>
+
+    <p id="last-update-line" style="font-style:italic; color:#8a7e6b; font-size:0.7em; margin:0 0 0.3em 0; letter-spacing:0.01em; opacity:0.7;"></p>
+
+    <div class="tab-content active" id="content-genie">
+      <div class="section">
+        <div class="label">Currently</div>
+        <p class="now-text" id="genie-now">Loading...</p>
+      </div>
+      <div class="section">
+        <div class="label">Sub-agents</div>
+        <ul class="text-list" id="genie-agents"></ul>
+      </div>
+      <div class="section">
+        <div class="label">Queue</div>
+        <ol class="text-list" id="genie-queue"></ol>
+      </div>
+      <div class="section">
+        <div class="label">Done</div>
+        <ul class="text-list" id="genie-done"></ul>
+      </div>
+    </div>
+
+    <div class="tab-content" id="content-jett">
+      <div class="section">
+        <div class="label">Currently</div>
+        <p class="now-text" id="jett-now">Loading...</p>
+      </div>
+      <div class="section">
+        <div class="label">Sub-agents</div>
+        <ul class="text-list" id="jett-agents"></ul>
+      </div>
+      <div class="section">
+        <div class="label">Queue</div>
+        <ol class="text-list" id="jett-queue"></ol>
+      </div>
+      <div class="section">
+        <div class="label">Done</div>
+        <ul class="text-list" id="jett-done"></ul>
+      </div>
+    </div>
+
+    <footer>
+      <span id="updated"></span>
+    </footer>
+  </div>
+
+  <script>
+    let cur = 'genie';
+    const D = {};
+
+    function forceRefresh() {
+      const btn = document.getElementById('refresh-btn');
+      btn.textContent = '↻ loading...';
+      btn.style.opacity = '1';
+      load().then(() => {
+        btn.textContent = '↻ refresh';
+        btn.style.opacity = '0.5';
+      });
+    }
+
+    function switchTab(t) {
+      cur = t;
+      document.querySelectorAll('nav a').forEach(a => a.classList.toggle('active', a.dataset.tab === t));
+      document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+      document.getElementById('content-'+t).classList.add('active');
+      if (D[t]) { render(t, D[t]); renderBar(t, D[t]); }
+    }
+
+    async function load() {
+      try {
+        const [g,j] = await Promise.all([
+          fetch('genie-status.json?'+Date.now()).then(r=>r.json()),
+          fetch('jett-status.json?'+Date.now()).then(r=>r.json())
+        ]);
+        D.genie=g; D.jett=j;
+        render('genie',g); render('jett',j); dots();
+        renderBar(cur, D[cur]);
+      } catch(e) { console.error(e); }
+    }
+
+    function dots() {
+      ['genie','jett'].forEach(a => {
+        const d = document.getElementById(a+'-dot');
+        const fresh = D[a]?.lastUpdated && (Date.now()-new Date(D[a].lastUpdated).getTime() < 30*60*1000);
+        d.className = 'dot '+(fresh?'on':'off');
+      });
+    }
+
+    function esc(s) { const d=document.createElement('div'); d.textContent=s; return d.innerHTML; }
+
+    let _lastUpdateISO = null;
+    function updateInlineTime(iso) {
+      if (iso) _lastUpdateISO = iso;
+      if (!_lastUpdateISO) return;
+      const ms = Date.now() - new Date(_lastUpdateISO).getTime();
+      const sec = Math.floor(ms/1000);
+      let ago;
+      if (sec < 60) ago = 'just now';
+      else if (sec < 3600) ago = Math.floor(sec/60) + 'm ago';
+      else if (sec < 86400) ago = Math.floor(sec/3600) + 'h ' + Math.floor((sec%3600)/60) + 'm ago';
+      else ago = Math.floor(sec/86400) + 'd ago';
+      const el = document.getElementById('last-update-line');
+      if (el) el.textContent = 'Last update: ' + fmt(_lastUpdateISO) + ' · ' + ago;
+    }
+    setInterval(() => updateInlineTime(), 10000);
+
+    function fmt(iso) {
+      if(!iso) return '';
+      return new Date(iso).toLocaleString('en-US',{month:'short',day:'numeric',hour:'numeric',minute:'2-digit',hour12:true});
+    }
+
+    function render(p, d) {
+      document.getElementById(p+'-now').textContent = d.currentWork || 'Idle';
+
+      const al = document.getElementById(p+'-agents');
+      if (d.subAgents?.length) {
+        al.innerHTML = d.subAgents.map(a => {
+          const sc = a.status==='complete'?'s-done':a.status==='running'?'s-running':'s-queued';
+          const t = a.completedAt?'<span class="meta"> · '+esc(fmt(a.completedAt))+'</span>':'';
+          return '<li><span class="status '+sc+'">'+esc(a.status)+'</span>'+esc(a.name)+' — '+esc(a.task)+t+'</li>';
+        }).join('');
+      } else {
+        al.innerHTML = '<li class="empty">None</li>';
+      }
+
+      const ql = document.getElementById(p+'-queue');
+      if (d.queue?.length) {
+        ql.innerHTML = d.queue.map((q,i) => '<li><span class="queue-num">'+(i+1)+'.</span>'+esc(q)+'</li>').join('');
+      } else {
+        ql.innerHTML = '<li class="empty">Empty</li>';
+      }
+
+      const cl = document.getElementById(p+'-done');
+      if (d.recentCompletions?.length) {
+        cl.innerHTML = d.recentCompletions.map(c =>
+          '<li>'+esc(c.task)+'<span class="meta"> · '+esc(c.time)+'</span></li>'
+        ).join('');
+      } else {
+        cl.innerHTML = '<li class="empty">Nothing yet</li>';
+      }
+
+      if (p===cur && d.lastUpdated) {
+        document.getElementById('updated').textContent = 'Updated '+fmt(d.lastUpdated);
+        updateInlineTime(d.lastUpdated);
+      }
+    }
+
+    // Status bar
+    function renderBar(p, d) {
+      const s = d.system;
+      if (!s) { document.getElementById('bar-stats').innerHTML = ''; return; }
+
+      const parts = [];
+
+      // Battery
+      if (s.battery && s.battery.percent !== null) {
+        const bp = s.battery.percent;
+        const cls = bp > 30 ? 'stat-good' : bp > 10 ? 'stat-warn' : 'stat-bad';
+        const icon = s.battery.charging ? '⚡' : '🔋';
+        parts.push('<span class="stat"><i class="stat-icon">'+icon+'</i><span class="stat-val '+cls+'">'+bp+'%</span></span>');
+      } else if (s.battery) {
+        parts.push('<span class="stat"><i class="stat-icon">⚡</i><span class="stat-val stat-good">AC</span></span>');
+      }
+
+      // Network
+      if (s.network) {
+        if (s.network.status === 'online') {
+          const ms = Math.round(s.network.latencyMs);
+          const cls = ms < 50 ? 'stat-good' : ms < 150 ? 'stat-warn' : 'stat-bad';
+          parts.push('<span class="stat"><i class="stat-icon">↕</i><span class="stat-val '+cls+'">'+ms+'ms</span></span>');
+        } else {
+          parts.push('<span class="stat"><i class="stat-icon">✕</i><span class="stat-val stat-bad">offline</span></span>');
+        }
+      }
+
+      // CPU
+      if (s.cpu) {
+        const cp = s.cpu.percent;
+        const cls = cp < 50 ? 'stat-good' : cp < 80 ? 'stat-warn' : 'stat-bad';
+        parts.push('<span class="stat">CPU <span class="stat-val '+cls+'">'+cp+'%</span></span>');
+      }
+
+      // Memory
+      if (s.memory) {
+        const mp = s.memory.percent;
+        const cls = mp < 60 ? 'stat-good' : mp < 85 ? 'stat-warn' : 'stat-bad';
+        parts.push('<span class="stat">MEM <span class="stat-val '+cls+'">'+mp+'%</span></span>');
+      }
+
+      // Disk
+      if (s.disk) {
+        parts.push('<span class="stat">DISK <span class="stat-val stat-good">'+s.disk.availGb+'G free</span></span>');
+      }
+
+      // Sub-agents
+      const active = d.activeSubAgents || 0;
+      if (active > 0) {
+        parts.push('<span class="stat"><i class="stat-icon">⊞</i><span class="stat-val stat-running">'+active+' agent'+(active>1?'s':'')+'</span></span>');
+      } else {
+        parts.push('<span class="stat"><i class="stat-icon">⊞</i><span class="stat-val">0</span></span>');
+      }
+
+      document.getElementById('bar-stats').innerHTML = parts.join('');
+    }
+
+    // Theme toggle
+    function toggleTheme() {
+      const body = document.body;
+      const btn = document.querySelector('.theme-toggle');
+      if (body.classList.contains('dark')) {
+        body.classList.remove('dark');
+        body.classList.add('light');
+        btn.textContent = '☾';
+        localStorage.setItem('theme', 'light');
+      } else if (body.classList.contains('light')) {
+        body.classList.remove('light');
+        body.classList.add('dark');
+        btn.textContent = '☀︎';
+        localStorage.setItem('theme', 'dark');
+      } else {
+        // Auto mode — detect current and flip
+        const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (isDark) {
+          body.classList.add('light');
+          btn.textContent = '☾';
+          localStorage.setItem('theme', 'light');
+        } else {
+          body.classList.add('dark');
+          btn.textContent = '☀︎';
+          localStorage.setItem('theme', 'dark');
+        }
+      }
+    }
+
+    // Restore saved theme
+    (function() {
+      const saved = localStorage.getItem('theme');
+      const btn = document.querySelector('.theme-toggle');
+      if (saved === 'dark') {
+        document.body.classList.add('dark');
+        btn.textContent = '☀︎';
+      } else if (saved === 'light') {
+        document.body.classList.add('light');
+        btn.textContent = '☾';
+      } else {
+        // Auto — set icon based on system
+        btn.textContent = window.matchMedia('(prefers-color-scheme: dark)').matches ? '☀︎' : '☾';
+      }
+    })();
+
+    load(); setInterval(load, 30000);
+  </script>
+</body>
+</html>

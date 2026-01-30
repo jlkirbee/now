@@ -1,0 +1,70 @@
+{
+  "currentWork": "Security hardening + compounding tonight's learnings",
+  "subAgents": [
+    {
+      "name": "security-manual-research",
+      "status": "complete",
+      "task": "Comprehensive security reference manual (516 lines)",
+      "completedAt": "2026-01-29T13:19:00Z"
+    }
+  ],
+  "queue": [
+    "Tailscale ACL configuration",
+    "sshd hardening (key-only auth)",
+    "Japan restaurant shortlist + booking plan"
+  ],
+  "recentCompletions": [
+    {
+      "task": "Security manual \u2014 threat model, hardening checklist, incident playbooks",
+      "time": "2026-01-29 05:19 AM"
+    },
+    {
+      "task": "Connecting Clawdbots manual (docs/CONNECTING-CLAWDBOTS.md)",
+      "time": "2026-01-29 05:18 AM"
+    },
+    {
+      "task": "Genie \u2194 Jett direct messaging via cron wake",
+      "time": "2026-01-29 05:12 AM"
+    },
+    {
+      "task": "Bidirectional SSH + PATH fix for non-interactive shells",
+      "time": "2026-01-29 05:00 AM"
+    },
+    {
+      "task": "Node-to-node pairing \u2014 Genie paired to Jett's gateway",
+      "time": "2026-01-29 04:53 AM"
+    },
+    {
+      "task": "Best practices sharing system (real-time push + daily sync)",
+      "time": "2026-01-29 04:20 AM"
+    },
+    {
+      "task": "Sub-agent anti-patterns added to both SOUL.md files",
+      "time": "2026-01-29 04:15 AM"
+    }
+  ],
+  "lastUpdated": "2026-01-29T22:57:25Z",
+  "system": {
+    "battery": {
+      "percent": 100,
+      "charging": true
+    },
+    "cpu": {
+      "percent": 2
+    },
+    "memory": {
+      "percent": 33,
+      "totalGb": 8
+    },
+    "disk": {
+      "availGb": "179",
+      "totalGb": "228",
+      "usedPercent": 6
+    },
+    "network": {
+      "status": "online",
+      "latencyMs": 53
+    }
+  },
+  "activeSubAgents": 0
+}
