@@ -29,17 +29,17 @@
       "time": "2026-01-30 03:40 AM"
     }
   ],
-  "lastUpdated": "2026-01-30T20:37:00Z",
+  "lastUpdated": "2026-01-30T20:52:00Z",
   "system": {
     "battery": {
       "percent": null,
       "charging": true
     },
     "cpu": {
-      "percent": 49
+      "percent": 61
     },
     "memory": {
-      "percent": 42,
+      "percent": 43,
       "totalGb": 24
     },
     "disk": {
