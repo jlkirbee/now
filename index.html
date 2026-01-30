@@ -307,6 +307,14 @@
       border-bottom: 1px solid #e8e4df;
     }
 
+    .col-vitals {
+      float: right;
+      font-size: 0.75rem;
+      text-transform: none;
+      letter-spacing: 0;
+      opacity: 0.7;
+    }
+
     .column-header .dot {
       display: inline-block;
       width: 5px;
@@ -358,7 +366,7 @@
 
     <div class="columns">
       <div class="column">
-        <div class="column-header">Genie<span class="dot on" id="genie-dot-col"></span></div>
+        <div class="column-header">Genie<span class="dot on" id="genie-dot-col"></span><span class="col-vitals" id="genie-vitals"></span></div>
         <div class="tab-content active" id="content-genie">
           <div class="section">
             <div class="label">Currently</div>
@@ -379,7 +387,7 @@
         </div>
       </div>
       <div class="column">
-        <div class="column-header">Jett<span class="dot on" id="jett-dot-col"></span></div>
+        <div class="column-header">Jett<span class="dot on" id="jett-dot-col"></span><span class="col-vitals" id="jett-vitals"></span></div>
         <div class="tab-content" id="content-jett">
           <div class="section">
             <div class="label">Currently</div>
@@ -441,7 +449,7 @@
         ]);
         D.genie=g; D.jett=j;
         render('genie',g); render('jett',j); dots();
-        renderBar(cur, D[cur]);
+        renderBar('genie', g); renderBar('jett', j);
       } catch(e) { console.error(e); }
     }
 
@@ -570,6 +578,9 @@
       }
 
       document.getElementById('bar-stats').innerHTML = parts.join('');
+      // Also render into column vitals for wide layout
+      const colVitals = document.getElementById(p + '-vitals');
+      if (colVitals) colVitals.innerHTML = parts.join('');
     }
 
     // Theme toggle
