@@ -29,14 +29,15 @@
       "time": "2026-01-29 05:23 PM"
     }
   ],
-  "lastUpdated": "2026-01-30T06:07:00Z",
+  "lastUpdated": "2026-01-30T06:37:00Z",
+  "activeSubAgents": 0,
   "system": {
     "battery": {
       "percent": null,
       "charging": true
     },
     "cpu": {
-      "percent": 6
+      "percent": 5
     },
     "memory": {
       "percent": 28,
@@ -49,8 +50,7 @@
     },
     "network": {
       "status": "online",
-      "latencyMs": 33
+      "latencyMs": 66
     }
-  },
-  "activeSubAgents": 0
+  }
 }
