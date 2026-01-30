@@ -1,62 +1,33 @@
 {
-  "lastUpdated": "2026-01-30T11:40:26Z",
-  "currentWork": "Late night session \u2014 workflow overhaul, security audit, deep research SOP",
-  "subAgents": [
-    {
-      "name": "merge-sop-and-prompt",
-      "status": "running",
-      "task": "Merging deep research prompt SOPs + crafting Japanese restaurant AI calling prompt"
-    },
-    {
-      "name": "security-audit-build",
-      "status": "complete",
-      "task": "Security audit script \u2014 hybrid bash/AI, both machines, baseline saved",
-      "completedAt": "2026-01-30T10:51:00Z"
-    },
-    {
-      "name": "fact-check-technical",
-      "status": "complete",
-      "task": "Decision log fact-check: 14/15 verified",
-      "completedAt": "2026-01-30T10:32:00Z"
-    },
-    {
-      "name": "fact-check-dates",
-      "status": "complete",
-      "task": "Decision log date verification: 23/31 verified, 2 fixed",
-      "completedAt": "2026-01-30T10:35:00Z"
-    },
-    {
-      "name": "fact-check-reasoning",
-      "status": "complete",
-      "task": "Reasoning claims fact-check: usage stats corrected",
-      "completedAt": "2026-01-30T10:37:00Z"
-    }
-  ],
+  "lastUpdated": "2026-01-30T11:44:00Z",
+  "currentWork": "Overnight mode — compound complete, running security scan + memory maintenance",
+  "subAgents": [],
   "queue": [
-    "Update weekly security cron to use new script",
-    "Japanese restaurant AI calling research",
-    "/now refresh button \u2192 Telegram deep link (done)"
+    "Security scan all public repos for leaked bot links/credentials",
+    "Verify Genie adopted Hard Rule #1",
+    "MEMORY.md trim pass (currently over 400 line target)",
+    "Context hygiene — weekly pass (TOOLS.md, stale entries)"
   ],
   "recentCompletions": [
     {
-      "task": "Workflow overhaul \u2014 unified Brainstorm\u2192Plan\u2192Build flow with auto-trigger review gate",
-      "time": "2026-01-30 02:46 AM"
+      "task": "Hard Rule #1 — scrubbed bot link from /now repo + entire git history",
+      "time": "2026-01-30 03:41 AM"
     },
     {
-      "task": "Merge Discipline (Jett\u2194Genie) \u2014 SOUL.md rule for non-destructive syncing",
-      "time": "2026-01-30 02:36 AM"
+      "task": "Per-column last-updated timestamps on /now wide layout",
+      "time": "2026-01-30 03:28 AM"
     },
     {
-      "task": "Decision log corrections \u2014 2 misdated entries fixed, usage stats corrected",
-      "time": "2026-01-30 02:37 AM"
+      "task": "Deep research SOP merged — ChatGPT + Jett best of both",
+      "time": "2026-01-30 03:01 AM"
     },
     {
-      "task": "Security audit script + baseline \u2014 found & fixed Genie's keychain perms",
+      "task": "Security audit script built + baseline saved",
       "time": "2026-01-30 02:51 AM"
     },
     {
-      "task": "Deep research prompt SOP v1",
-      "time": "2026-01-30 03:01 AM"
+      "task": "Workflow overhaul — unified Brainstorm→Plan→Build flow",
+      "time": "2026-01-30 02:46 AM"
     }
   ],
   "system": {
@@ -65,21 +36,21 @@
       "charging": true
     },
     "cpu": {
-      "percent": 7
+      "percent": 8
     },
     "memory": {
-      "percent": 32,
+      "percent": 61,
       "totalGb": 8
     },
     "disk": {
       "availGb": "178",
       "totalGb": "228",
-      "usedPercent": 7
+      "usedPercent": 22
     },
     "network": {
       "status": "online",
-      "latencyMs": 27
+      "latencyMs": 28
     }
   },
-  "activeSubAgents": 1
+  "activeSubAgents": 0
 }
