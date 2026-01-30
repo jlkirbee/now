@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-01-30T12:10:34Z",
+  "lastUpdated": "2026-01-30T12:20:36Z",
   "currentWork": "Overnight mode \u2014 compound complete, running security scan + memory maintenance",
   "subAgents": [],
   "queue": [
@@ -36,10 +36,10 @@
       "charging": true
     },
     "cpu": {
-      "percent": 2
+      "percent": 4
     },
     "memory": {
-      "percent": 32,
+      "percent": 31,
       "totalGb": 8
     },
     "disk": {
@@ -49,7 +49,7 @@
     },
     "network": {
       "status": "online",
-      "latencyMs": 24
+      "latencyMs": 110
     }
   },
   "activeSubAgents": 0
