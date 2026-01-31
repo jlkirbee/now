@@ -40,7 +40,7 @@
       "percent": 18
     },
     "memory": {
-      "percent": 58,
+      "percent": 57,
       "totalGb": 24
     },
     "disk": {
@@ -50,7 +50,7 @@
     },
     "network": {
       "status": "online",
-      "latencyMs": 68
+      "latencyMs": 123
     }
   }
 }
