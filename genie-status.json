@@ -50,7 +50,7 @@
     },
     "network": {
       "status": "online",
-      "latencyMs": 60
+      "latencyMs": 44
     }
   }
 }
