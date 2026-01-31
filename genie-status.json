@@ -37,10 +37,10 @@
       "charging": true
     },
     "cpu": {
-      "percent": 47
+      "percent": 60
     },
     "memory": {
-      "percent": 59,
+      "percent": 60,
       "totalGb": 24
     },
     "disk": {
@@ -50,7 +50,7 @@
     },
     "network": {
       "status": "online",
-      "latencyMs": 70
+      "latencyMs": 66
     }
   }
 }
