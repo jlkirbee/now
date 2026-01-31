@@ -1,5 +1,5 @@
 {
-  "currentWork": "End of day \u2014 running periodic maintenance. Shadow sessions with factory team planned for next week.",
+  "currentWork": "Evening wind-down \u2014 periodic maintenance and memory curation. Shadow sessions with factory team planned for next week.",
   "subAgents": [],
   "queue": [
     "Shadow session prep \u2014 observe real factory workflows before next build",
@@ -29,7 +29,7 @@
       "time": "2026-01-30 3:30 PM"
     }
   ],
-  "lastUpdated": "2026-01-31T01:22:00Z",
+  "lastUpdated": "2026-01-31T02:07:00Z",
   "system": {
     "battery": {
       "percent": null,
@@ -39,7 +39,7 @@
       "percent": 60
     },
     "memory": {
-      "percent": 45,
+      "percent": 46,
       "totalGb": 24
     },
     "disk": {
@@ -49,7 +49,7 @@
     },
     "network": {
       "status": "online",
-      "latencyMs": 52
+      "latencyMs": 69
     }
   },
   "activeSubAgents": 0
