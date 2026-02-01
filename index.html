@@ -68,7 +68,7 @@
 
   /* ── Header ── */
   header {
-    margin-bottom: 2.8rem;
+    margin-bottom: 1rem;
     display: flex;
     align-items: baseline;
     justify-content: space-between;
@@ -112,6 +112,20 @@
   .header-actions button:hover,
   .header-actions a:hover {
     color: var(--text);
+  }
+
+  /* ── Intro ── */
+  .intro {
+    font-size: 0.88rem;
+    color: var(--muted);
+    line-height: 1.65;
+    margin-bottom: 2.2rem;
+    max-width: 40em;
+  }
+
+  .intro strong {
+    color: var(--text);
+    font-weight: 500;
   }
 
   /* ── Tabs (narrow only) ── */
@@ -222,7 +236,10 @@
 
   /* ── Sections ── */
   .section {
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
+    padding: 0.7rem 0.9rem;
+    background: var(--card-bg);
+    border-radius: 6px;
   }
 
   .section-title {
@@ -232,6 +249,14 @@
     color: var(--label);
     margin-bottom: 0.5rem;
     font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.35em;
+  }
+
+  .section-title[data-icon]::before {
+    content: attr(data-icon);
+    font-size: 0.85em;
   }
 
   .current-work {
@@ -331,6 +356,23 @@
     letter-spacing: 0.02em;
   }
 
+  footer a {
+    color: var(--muted);
+    text-decoration: none;
+    border-bottom: 1px solid var(--border);
+    transition: color 0.2s, border-color 0.2s;
+  }
+
+  footer a:hover {
+    color: var(--text);
+    border-bottom-color: var(--muted);
+  }
+
+  .footer-updated {
+    margin-top: 0.3rem;
+    font-size: 0.72rem;
+  }
+
   /* ── Loading / Error ── */
   .loading {
     color: var(--muted);
@@ -363,6 +405,9 @@
 
     .done-item { flex-direction: column; gap: 0.1rem; }
     .done-time { padding-left: 0; }
+
+    .intro { margin-bottom: 1.4rem; font-size: 0.84rem; }
+    .section { padding: 0.6rem 0.75rem; }
   }
 </style>
 </head>
@@ -376,6 +421,12 @@
       <button id="themeBtn" title="Toggle dark mode"></button>
     </div>
   </header>
+
+  <p class="intro">
+    Two AI agents — <strong>Genie</strong> and <strong>Jett</strong> — help John with
+    day-to-day tasks, projects, and automations. This page is auto-updated by the agents
+    themselves so you can see what they're up to right now.
+  </p>
 
   <!-- Tabs (narrow only) -->
   <div class="tabs" role="tablist">
@@ -410,7 +461,10 @@
     </div>
   </div>
 
-  <footer id="footer"></footer>
+  <footer id="footer">
+    <div>Powered by <a href="https://openclaw.ai" target="_blank" rel="noopener">OpenClaw</a></div>
+    <div class="footer-updated" id="footer-updated"></div>
+  </footer>
 </div>
 
 <script>
@@ -594,7 +648,7 @@
 
     // Currently
     html += '<div class="section">';
-    html += '<div class="section-title">Currently</div>';
+    html += '<div class="section-title" data-icon="◆">Currently</div>';
     html += d.currentWork
       ? '<div class="current-work">' + escHtml(d.currentWork) + '</div>'
       : '<div class="empty">Nothing right now</div>';
@@ -602,7 +656,7 @@
 
     // Sub-agents
     html += '<div class="section">';
-    html += '<div class="section-title">Sub-agents</div>';
+    html += '<div class="section-title" data-icon="◇">Sub-agents</div>';
     if (d.subAgents && d.subAgents.length > 0) {
       d.subAgents.forEach(function(a) {
         html += '<div class="agent-row">';
@@ -618,7 +672,7 @@
 
     // Queue
     html += '<div class="section">';
-    html += '<div class="section-title">Queue</div>';
+    html += '<div class="section-title" data-icon="▸">Queue</div>';
     if (d.queue && d.queue.length > 0) {
       html += '<ul class="queue-list">';
       d.queue.forEach(function(q) {
@@ -632,7 +686,7 @@
 
     // Done
     html += '<div class="section">';
-    html += '<div class="section-title">Done</div>';
+    html += '<div class="section-title" data-icon="✓">Done</div>';
     if (d.recentCompletions && d.recentCompletions.length > 0) {
       d.recentCompletions.forEach(function(c) {
         html += '<div class="done-item">';
@@ -663,9 +717,9 @@
   }
 
   function updateFooter() {
-    var el = document.getElementById('footer');
+    var el = document.getElementById('footer-updated');
     if (lastFetch) {
-      el.textContent = 'updated ' + lastFetch.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' }).toLowerCase();
+      el.textContent = 'fetched ' + lastFetch.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' }).toLowerCase();
     }
   }
 
