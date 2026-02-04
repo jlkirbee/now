@@ -28,17 +28,17 @@
       "time": "Feb 3, 3:30 PM"
     }
   ],
-  "lastUpdated": "2026-02-04T07:07:00.000Z",
+  "lastUpdated": "2026-02-04T07:22:00.000Z",
   "system": {
     "battery": {
       "percent": null,
       "charging": true
     },
     "cpu": {
-      "percent": 5
+      "percent": 2
     },
     "memory": {
-      "percent": 11,
+      "percent": 10,
       "totalGb": 24
     },
     "disk": {
@@ -48,7 +48,7 @@
     },
     "network": {
       "status": "online",
-      "latencyMs": 60
+      "latencyMs": 68
     }
   },
   "activeSubAgents": 0
