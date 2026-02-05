@@ -35,7 +35,7 @@
       "charging": true
     },
     "cpu": {
-      "percent": 5
+      "percent": 4
     },
     "memory": {
       "percent": 10,
@@ -48,7 +48,7 @@
     },
     "network": {
       "status": "online",
-      "latencyMs": 53
+      "latencyMs": 56
     }
   },
   "activeSubAgents": 0
